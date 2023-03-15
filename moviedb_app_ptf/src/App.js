@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route path="/:topTen" element={<Movies/> } exact />
+          
         </Switch>
       </BrowserRouter>
     </div>
