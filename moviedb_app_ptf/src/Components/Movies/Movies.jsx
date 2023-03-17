@@ -23,9 +23,12 @@ const Movies = props =>{
         .then(res => setMovies(res.data.results))
         // .cath(console.error)
     },[movieType]);
+    
+    const top_movies = movies.slice(0, 10);
 
     return <div className="movies">
-        {movies.map(movie => <Movie movie={movie} /> )}   
+        
+        {top_movies.map(movie => <Movie movie={movie} /> )}
     </div>
 
 }
