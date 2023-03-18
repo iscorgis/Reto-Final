@@ -23,6 +23,10 @@ const Header = props =>{
             <span className="searchByTitle">Peliculas UpComing</span>
         </NavLink>
 
+        <NavLink to="/topTen">
+            <span className="searchByTitle">Peliculas Top 10</span>
+        </NavLink>
+
         <NavLink to="/">
            
         </NavLink>

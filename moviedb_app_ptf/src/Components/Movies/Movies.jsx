@@ -4,6 +4,9 @@ import Movie from '../Movie/Movie.jsx';
 import { useParams } from "react-router-dom";
 
 const Movies = props =>{
+
+    
+
     const params = useParams();
     const movieType = params.movieType;
     const [movies, setMovies] = useState([]);
@@ -24,11 +27,40 @@ const Movies = props =>{
         // .cath(console.error)
     },[movieType]);
     
-    const top_movies = movies.slice(0, 10);
+    // const filtered_movies = movies
+
+    console.log('movieType',movieType)
+
+    const filtered_movies = movies.slice(0, 10);
+
+    // if (movieType === 'topTen') {
+    //     filtered_movies = movies.slice(0, 10);
+    // }
+
+
+
+    const [stats, setStats] = useState([]);
+    const [ID,setID] = useState('');
+    
+    const changeId = (event) =>{
+        console.log('event',event)
+     setID(event);
+    }
 
     return <div className="movies">
-        
-        {top_movies.map(movie => <Movie movie={movie} /> )}
+        <div>
+        <form onSubmit={(event) => event.preventDefault()}>
+      <input
+        type='text'
+        onChange={(event) => {changeId(event.target.value) }}
+        placeholder='Search'
+      />
+    </form>
+
+
+
+        </div>
+        {filtered_movies.map(movie => <Movie movie={movie} /> )}
     </div>
 
 }
