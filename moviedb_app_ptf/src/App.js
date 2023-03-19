@@ -34,13 +34,23 @@ function App() {
     var e = document.getElementById("searchId");
     if (e != null){
     var value = e.value;
-
-  var text = e.options[e.selectedIndex].text;
-  console.log("tex",text)
-  console.log("vaue",e.value)
+    var filtered = data.results;
+    if (e.value == 1) {
+      filtered = data.results.filter(a => a.title.search({query}) !== -1);
+    };
+    if (e.value == 2) {
+      filtered = data.results.filter(a => a.original_title.search({query}) !== -1);
+    };
+    if (e.value == 3) {
+      filtered = data.results.filter(a => a.overview.search({query}) !== -1);
+    };
+     
+  //  var text = e.options[e.selectedIndex].text;
+  // console.log("tex",text)
+  // console.log("vaue",e.value)
 }
-
-    setMovies(data.results);
+  setMovies(filtered);
+    // setMovies(data.results);
     }
     catch(e){
       console.log(e);
@@ -91,11 +101,11 @@ function App() {
               name="query"
               value={query} onChange={changeHandler}></FormControl>
               <Button variant="secondary" type="submit">Search</Button>
-              <select className="form-select" aria-label="Search Type Selector" id="searchId" >
-  <option value="1">By Tittle</option>
-  <option value="2">By Original Tittle</option>
-  <option value="3">By Overview</option>
-</select>
+                <select className="form-select" aria-label="Search Type Selector" id="searchId" >
+                  <option value="1">By Tittle</option>
+                  <option value="2">By Original Tittle</option>
+                  <option value="3">By Overview</option>
+                </select>
             </Form>
           </Navbar.Collapse>
       </Container>
