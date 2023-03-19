@@ -1,5 +1,24 @@
-# Getting Started with Create React App
+# Getting Started with React Movie App
 
+
+#Resum
+The app developed with react in vscode try to solve the last exercise of the geekshub react frontend course. It let the user to watch movie and tv shows information. Additionally, the app use the search Api-endpoint provided from moviedb to filter and show the data
+
+Some screenshots:
+
+Main app layout
+![Main view](https://ibb.co/zJ19S1y)
+
+Search funcinality, let the user to filter the movie/season by title, overview...
+![Type search filter](https://ibb.co/CHsgkz8)
+
+Pop-up movie detail
+![pop up detail](https://ibb.co/mCjWZn4)
+
+
+
+
+# Run & Build Details
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
