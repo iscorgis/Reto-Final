@@ -7,13 +7,13 @@ The app developed with react in vscode try to solve the last exercise of the gee
 Some screenshots:
 
 Main app layout
-![Main view]([https://ibb.co/zJ19S1y](https://i.ibb.co/Hd0wr0W/Movie-1.png))
+![Main view](https://i.ibb.co/Hd0wr0W/Movie-1.png)
 
 Search funcinality, let the user to filter the movie/season by title, overview...
-![Type search filter]([https://ibb.co/CHsgkz8](https://i.ibb.co/rwfYCm0/Movie-3.png))
+![Type search filter](https://i.ibb.co/rwfYCm0/Movie-3.png)
 
 Pop-up movie detail
-![pop up detail]([https://ibb.co/mCjWZn4](https://i.ibb.co/99D5KxW/Movie-2.png))
+![pop up detail](https://i.ibb.co/99D5KxW/Movie-2.png)
 
 
 
