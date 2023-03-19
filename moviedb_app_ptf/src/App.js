@@ -29,7 +29,18 @@ function App() {
       const res= await fetch(url);
       const data= await res.json();
       console.log(data);
-      setMovies(data.results);
+
+    //filter results by search type
+    var e = document.getElementById("searchId");
+    if (e != null){
+    var value = e.value;
+
+  var text = e.options[e.selectedIndex].text;
+  console.log("tex",text)
+  console.log("vaue",e.value)
+}
+
+    setMovies(data.results);
     }
     catch(e){
       console.log(e);
@@ -45,7 +56,7 @@ function App() {
       const data= await res.json();
       console.log(data);
       // data.results.slice(0, 10);
-      setMovies( data.results.slice(0, 1));
+      setMovies( data.results.slice(0, 10));
     }
     catch(e){
       console.log(e);
@@ -80,8 +91,7 @@ function App() {
               name="query"
               value={query} onChange={changeHandler}></FormControl>
               <Button variant="secondary" type="submit">Search</Button>
-              <select class="form-select" aria-label="Default select example">
-  <option selected>Search Option</option>
+              <select className="form-select" aria-label="Search Type Selector" id="searchId" >
   <option value="1">By Tittle</option>
   <option value="2">By Original Tittle</option>
   <option value="3">By Overview</option>
