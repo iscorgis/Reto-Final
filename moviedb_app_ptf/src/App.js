@@ -45,10 +45,46 @@ function App() {
       filtered = data.results.filter(a => a.overview.search({query}) !== -1);
     };
      
-  //  var text = e.options[e.selectedIndex].text;
-  // console.log("tex",text)
-  // console.log("vaue",e.value)
-}
+      //  var text = e.options[e.selectedIndex].text;
+      // console.log("tex",text)
+      // console.log("vaue",e.value)
+    }
+  setMovies(filtered);
+    // setMovies(data.results);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
+  const searchSeason = async(e)=>{
+    e.preventDefault();
+    console.log("Searching");
+    try{
+      const url=`https://api.themoviedb.org/3/search/tv?api_key=bcc4ff10c2939665232d75d8bf0ec093&language=en-US&page=1&include_adult=false&query=${query}`;
+      const res= await fetch(url);
+      const data= await res.json();
+      console.log(data);
+
+    //filter results by search type
+    var e = document.getElementById("searchId");
+    if (e != null){
+    var value = e.value;
+    var filtered = data.results;
+    if (e.value == 1) {
+      filtered = data.results.filter(a => a.title.search({query}) !== -1);
+    };
+    if (e.value == 2) {
+      filtered = data.results.filter(a => a.original_title.search({query}) !== -1);
+    };
+    if (e.value == 3) {
+      filtered = data.results.filter(a => a.overview.search({query}) !== -1);
+    };
+     
+      //  var text = e.options[e.selectedIndex].text;
+      // console.log("tex",text)
+      // console.log("vaue",e.value)
+    }
   setMovies(filtered);
     // setMovies(data.results);
     }
@@ -117,12 +153,25 @@ function App() {
         <Navbar.Brand className='Snd_Brand' href="/seasons" onClick={seasons} >Seasons</Navbar.Brand> 
         <Navbar.Brand className='Snd_Brand' href="/seasons" onClick={searchTopSeasons} >Top ten Seasons</Navbar.Brand> 
         <Navbar.Toggle aria-controls="navbarScroll"></Navbar.Toggle>
-
+        
           <Navbar.Collapse id="nabarScroll">
             <Nav 
             className="me-auto my-2 my-lg-3"
             style={{maxHeight:'100px'}}
             navbarScroll></Nav>
+
+            <Form className="d-flex" onSubmit={searchSeason} autoComplete="off">
+              <FormControl
+              type="search"
+              placeholder="TV series Search"
+              className="me-2"
+              aria-label="search"
+              name="query"
+              value={query} onChange={changeHandler}></FormControl>
+              <Button variant="secondary" type="submit">Search</Button>
+            </Form>
+
+
 
             <Form className="d-flex" onSubmit={searchMovie} autoComplete="off">
               <FormControl
