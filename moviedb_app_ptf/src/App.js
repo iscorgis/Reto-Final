@@ -72,6 +72,37 @@ function App() {
       console.log(e);
     }
   }
+
+  const searchTopSeasons = async(e)=>{
+    e.preventDefault();
+    console.log("Searching");
+    try{
+      const url=`https://api.themoviedb.org/3/tv/popular?api_key=f67d06ba539aeaff61cdab68c9a33c82&language=en-US&page=1`;
+      const res= await fetch(url);
+      const data= await res.json();
+      console.log(data);
+      setMovies( data.results.slice(0, 10));
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
+  const seasons = async(e)=>{
+    e.preventDefault();
+    console.log("Searching");
+    try{
+      const url=`https://api.themoviedb.org/3/tv/popular?api_key=f67d06ba539aeaff61cdab68c9a33c82&language=en-US&page=1`;
+      const res= await fetch(url);
+      const data= await res.json();
+      console.log(data);
+      setMovies( data.results);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
 // ----
   const changeHandler=(e)=>{
     setQuery(e.target.value);
@@ -83,7 +114,8 @@ function App() {
         <Navbar.Brand className='Main_Brand' href="/home">Movies & Seasons APP</Navbar.Brand>
         <Navbar.Brand className='Snd_Brand' href="/home">Trending</Navbar.Brand>
         <Navbar.Brand className='Snd_Brand' href="/topTen" onClick={searchTopTenMovies}>Top Ten Movies</Navbar.Brand>
-        <Navbar.Brand className='Snd_Brand' href="/seasons">Seasons</Navbar.Brand> 
+        <Navbar.Brand className='Snd_Brand' href="/seasons" onClick={seasons} >Seasons</Navbar.Brand> 
+        <Navbar.Brand className='Snd_Brand' href="/seasons" onClick={searchTopSeasons} >Top ten Seasons</Navbar.Brand> 
         <Navbar.Toggle aria-controls="navbarScroll"></Navbar.Toggle>
 
           <Navbar.Collapse id="nabarScroll">
