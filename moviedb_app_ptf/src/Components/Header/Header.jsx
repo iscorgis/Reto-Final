@@ -24,7 +24,7 @@ const Header = props =>{
         </NavLink>
 
         <NavLink to="/topTen">
-            <span className="searchByTitle">Peliculas Top 10</span>
+            <span className="topTen">Peliculas Top 10</span>
         </NavLink>
 
         <NavLink to="/">

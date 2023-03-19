@@ -5,40 +5,41 @@ import { useParams } from "react-router-dom";
 
 const Movies = props =>{
 
-    
-
     const params = useParams();
     const movieType = params.movieType;
     const [movies, setMovies] = useState([]);
 
-    // Endpoints:
-    // - top https://api.themoviedb.org/3/movie/popular?api_key=f67d06ba539aeaff61cdab68c9a33c82&language=es-ES&page=1
-
-
-    // useEffect(()=>{
-    //     axios.get(`https://api.themoviedb.org/3/movie/${movieType}?api_key=f67d06ba539aeaff61cdab68c9a33c82&language=es-ES`) 
-    //      .then(res => setMovies(res.data.results))
-    //     //  .cath(console.error)
-    // },[movieType]);
-
+    let Endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=f67d06ba539aeaff61cdab68c9a33c82&language=es-ES&page=1&total_results=1`
+    
     useEffect(()=>{
-        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=f67d06ba539aeaff61cdab68c9a33c82&language=es-ES&page=1&total_results=1`) 
+        if (movieType === "TopTen"){
+             Endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=f67d06ba539aeaff61cdab68c9a33c82&language=es-ES&page=1&total_results=10`
+        }
+        if (movieType === "searchByTitle"){
+            Endpoint = `https://api.themoviedb.org/3/search/movie?api_key=f67d06ba539aeaff61cdab68c9a33c82&query=${document.getElementById('searchTxt').value}`
+        } 
+        if (movieType === "searchByOverview"){
+            Endpoint = `https://api.themoviedb.org/3/search/movie?api_key=f67d06ba539aeaff61cdab68c9a33c82&query=${document.getElementById('searchTxt').value}`
+        }
+        if (movieType === "searchByOriTitle"){
+            Endpoint = `https://api.themoviedb.org/3/search/movie?api_key=f67d06ba539aeaff61cdab68c9a33c82&query=${document.getElementById('searchTxt').value}`
+        }
+        console.log("endpoint", Endpoint)
+        axios.get(Endpoint) 
         .then(res => setMovies(res.data.results))
         // .cath(console.error)
     },[movieType]);
+// }  
     
-    // const filtered_movies = movies
+    
+    let filtered_movies = movies
 
     console.log('movieType',movieType)
 
-    const filtered_movies = movies.slice(0, 10);
-
-    // if (movieType === 'topTen') {
-    //     filtered_movies = movies.slice(0, 10);
-    // }
-
-
-
+    if (movieType == "topTen"){
+        console.log('movieType1',movieType)
+        filtered_movies = movies.slice(0, 1);
+    }
     const [stats, setStats] = useState([]);
     const [ID,setID] = useState('');
     
@@ -49,10 +50,12 @@ const Movies = props =>{
 
     return <div className="movies">
         <div>
-        <form onSubmit={(event) => event.preventDefault()}>
+        <form 
+        // onSubmit={(event) => event.preventDefault()}
+        >
       <input
-        type='text'
-        onChange={(event) => {changeId(event.target.value) }}
+        type='text' id="searchTxt"
+            onChange={(event) => {changeId(event.target.value) }}
         placeholder='Search'
       />
     </form>

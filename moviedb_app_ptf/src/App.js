@@ -15,6 +15,7 @@ function App() {
        <Header />
         <Switch>
           <Route path="/:movieType"  element={<Movies/>} exact />
+          <Route path="/:seasons"  element={<Movies/>} exact />
         </Switch>
       </BrowserRouter>
     </div>
