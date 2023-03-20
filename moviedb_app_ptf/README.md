@@ -1,5 +1,5 @@
 # Getting Started with React Movie App
-
+## In order to run the application you will need to run npm install 
 
 #Resum
 The app developed with react in vscode try to solve the last exercise of the geekshub react frontend course. It let the user to watch movie and tv shows information. Additionally, the app use the search Api-endpoint provided from moviedb to filter and show the data
